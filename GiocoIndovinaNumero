@@ -1,0 +1,34 @@
+import java.util.Random;
+import java.util.Scanner;
+
+public class GiocoIndovinaNumero {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Random random = new Random();
+
+        int numeroSegreto = random.nextInt(100) + 1; // Numero casuale tra 1 e 100
+        int tentativi = 0;
+        boolean indovinato = false;
+
+        System.out.println("Benvenuto al gioco di indovinare il numero!");
+        System.out.println("Ho pensato a un numero tra 1 e 100. Prova a indovinarlo!");
+
+        while (!indovinato) {
+            System.out.print("Inserisci il tuo numero: ");
+            int numeroUtente = scanner.nextInt();
+            tentativi++;
+
+            if (numeroUtente < numeroSegreto) {
+                System.out.println("Troppo basso! Riprova.");
+            } else if (numeroUtente > numeroSegreto) {
+                System.out.println("Troppo alto! Riprova.");
+            } else {
+                indovinato = true;
+                System.out.println("Congratulazioni! Hai indovinato il numero in " + tentativi + " tentativi.");
+            }
+        }
+
+        scanner.close();
+    }
+}
